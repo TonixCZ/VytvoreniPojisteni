@@ -25,8 +25,8 @@ public class InsuredDTO extends InsuredEntity {
 
     private List<InsuranceEntity> insurances;
 
-    // Předpokládám, že InsuredEntity má vztah na UserEntity
-    private UserEntity user; // Toto je vztah na uživatele
+
+    private UserEntity user;
 
     // Gettery a settery
     public long getInsuredId() {

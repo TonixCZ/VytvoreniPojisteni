@@ -112,7 +112,7 @@ public class InsuredController {
         return "redirect:/insureds/list";
     }
 
-    // ✅ 7. DELETE - smazání pojištěnce
+    // smzani pojištěnce
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{insuredId}")
     public String deleteInsured(@PathVariable long insuredId, RedirectAttributes redirectAttributes) {

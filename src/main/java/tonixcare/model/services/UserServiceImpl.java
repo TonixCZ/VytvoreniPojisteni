@@ -20,10 +20,10 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private InsuredRepository insuredRepository; // Přidáme InsuredRepository
+    private InsuredRepository insuredRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder; // Injektujeme PasswordEncoder
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserEntity findByEmail(String email) {
@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
 
     public List<InsuranceEntity> getInsurancesByEmail(String email) {
-        // Použijeme správně injektované insuredRepository
+
         InsuredEntity insured = insuredRepository.findByEmail(email).orElse(null);  // Najdeme pojištěnce podle emailu
         if (insured != null) {
             return insured.getInsurances();  // Vrátíme seznam pojištění pro tohoto pojištěnce
@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Načtení uživatele podle emailu (username)
+        // Načtení uživatele podle emailu
         UserEntity user = userRepository.findByEmail(username);
         if (user == null) {
             throw new UsernameNotFoundException("Uživatel s tímto emailem neexistuje");

@@ -131,7 +131,7 @@ public class AccountController {
 
 
 
-
+//Post metoda pro editaci uživatele
     @PostMapping("/edit/{userId}")
     public String updateUser(@PathVariable Long userId,
                              @Valid @ModelAttribute UserDTO userDTO,

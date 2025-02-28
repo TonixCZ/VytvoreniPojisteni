@@ -16,7 +16,7 @@ public class InsuranceEntity {
 
     @Column
     @NotNull(message = "Typ pojištění je povinný")
-    private String insuranceType; // Typ pojištění (např. pojištění bytu, automobilu)
+    private String insuranceType; // Typ pojištění
 
 
     @ManyToOne
@@ -51,8 +51,6 @@ public class InsuranceEntity {
     public void setInsuranceId(long insuranceId) {
         this.insuranceId = insuranceId;
     }
-
-
 
     public String getInsuranceType() {
         return insuranceType;

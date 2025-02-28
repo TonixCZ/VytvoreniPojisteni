@@ -34,6 +34,8 @@ public class ArticleController {
         return "pages/articles/index";
     }
 
+
+    //METODA PRO ZOBRAZENI DETAILU CLANKU
     @GetMapping("{articleId}")
     public String renderDetail(
             @PathVariable long articleId,
@@ -45,12 +47,14 @@ public class ArticleController {
         return "pages/articles/detail";
     }
 
+    //metoda pro zobrazeni formulare pro vytvoreni clanku - pouze pro prihlasene uzivatele
     @PreAuthorize("isAuthenticated()")
     @GetMapping("create")
     public String renderCreateForm(@ModelAttribute ArticleDTO article) {
         return "pages/articles/create";
     }
 
+    //post metoda pro vytvoreni clanku
     @PreAuthorize("isAuthenticated()")
     @PostMapping("create")
     public String createArticle(
@@ -67,6 +71,8 @@ public class ArticleController {
         return "redirect:/articles";
     }
 
+
+//METODA PRO ZOBRAZENI FORMULARE PRO UPRAVU CLANKU - POUZE PRO ADMINISTRATORY
     @Secured("ROLE_ADMIN")
     @GetMapping("edit/{articleId}")
     public String renderEditForm(
@@ -79,6 +85,7 @@ public class ArticleController {
         return "pages/articles/edit";
     }
 
+    //post metoda pro upravu clanku
     @Secured("ROLE_ADMIN")
     @PostMapping("edit/{articleId}")
     public String editArticle(
@@ -97,6 +104,8 @@ public class ArticleController {
         return "redirect:/articles";
     }
 
+
+//METODA PRO SMAZANI CLANKU - POUZE PRO ADMINISTRATORY
     @Secured("ROLE_ADMIN")
     @GetMapping("delete/{articleId}")
     public String deleteArticle(

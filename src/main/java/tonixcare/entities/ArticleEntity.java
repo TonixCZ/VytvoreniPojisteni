@@ -17,6 +17,8 @@ public class ArticleEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
+
+
     //region: Getters and setters
     public long getArticleId() {
         return articleId;

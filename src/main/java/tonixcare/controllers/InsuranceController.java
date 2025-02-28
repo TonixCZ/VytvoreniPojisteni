@@ -33,7 +33,7 @@ public class InsuranceController {
     @Autowired
     private InsuredService insuredService;
 
-    // Přidání uživatele do modelu pro všechny metody
+    // Přidání uživatele do modelu
     @ModelAttribute("user")
     public UserEntity getAuthenticatedUser(Authentication authentication) {
         String email = authentication.getName();
@@ -48,7 +48,7 @@ public class InsuranceController {
         System.out.println("Pojištěnec ID: " + insuredId);
         if (insured == null) {
             System.out.println("Pojištěnec s ID " + insuredId + " nebyl nalezen.");
-            return "redirect:/error"; // Pokud pojištěnec neexistuje, přesměrujeme na chybu
+            return "redirect:/error"; // Pokud pojištěnec neexistuje, zobrazíme chybu
         }
 
         System.out.println("Pojištěnec s ID " + insuredId + " nalezen.");
@@ -74,7 +74,7 @@ public class InsuranceController {
             System.out.println("Received insured amount: " + insuranceEntity.getInsuredAmount());
             System.out.println("Received insured address: " + insuranceEntity.getInsuredAddress());
 
-            // zpracovaní
+            // zpracovaní formuláře
             InsuredDTO insured = insuredService.getById(insuredId);
             if (insured == null) {
                 model.addAttribute("error", "Pojištěnec nebyl nalezen.");
@@ -146,7 +146,7 @@ public class InsuranceController {
         // Seznam typů pojištění
         String[] insuranceTypes = {"Životní pojištění", "Úrazové pojištění", "Cestovní pojištění", "Pojištění vozidel"};
 
-        // Přidání pojištění do modelu pro zobrazení v šabloně
+        // Přidání pojištění do modelu
         model.addAttribute("insurance", fetchedInsurance);
         model.addAttribute("insuranceTypes", insuranceTypes);  // Předání seznamu typů pojištění do modelu
 
@@ -183,7 +183,7 @@ public class InsuranceController {
         InsuranceDTO fetchedInsurance = insuranceService.getInsuranceById(insuranceId)
                 .orElseThrow(() -> new EntityNotFoundException("Pojištění nenalezeno"));
 
-        // Přidání flash zprávy
+        // flash zprávy
         redirectAttributes.addFlashAttribute("success", "Pojištění úspěšně načteno.");
 
         model.addAttribute("insurance", fetchedInsurance);
