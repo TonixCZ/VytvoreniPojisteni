@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tonix Care - Pojišťovna</title>
+
+    <!-- Zahrnutí Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+    </style>
+</head>
+
+<body class="bg-light">
+
+<!-- Zahrnutí fragmentu pro <header> -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<!-- Sekce O nás -->
+<section id="about" class="container mt-5">
+    <div class="text-center">
+        <h2 class="mb-4"><i>O nás</i></h2>
+        <p class="lead">Tonix Care je moderní pojišťovna, která se zaměřuje na poskytování komplexního pojištění pro jednotlivce i firmy. Naším cílem je zajistit vám finanční ochranu a klid v různých životních situacích. Naše produkty jsou flexibilní a přizpůsobené potřebám každého klienta.</p>
+    </div>
+</section>
+
+<!-- Sekce Služby -->
+<section id="services" class="container mt-5">
+    <h2 class="text-center mb-4">Služby</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Životní pojištění</h5>
+                    <p class="card-text">Ochrání vaše blízké v případě nečekaných událostí a zajistí jim finanční stabilitu.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Úrazové pojištění</h5>
+                    <p class="card-text">Finanční pomoc v případě úrazu, která vám usnadní zotavení a překonání obtížných situací.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Cestovní pojištění</h5>
+                    <p class="card-text">Pojištění pro bezstarostné cestování po celém světě, ať už jedete kamkoli.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card shadow-sm text-center h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Pojištění vozidel</h5>
+                    <p class="card-text">Komplexní ochrana vašeho vozidla včetně havarijního pojištění a povinného ručení.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sekce Kontakt -->
+<section id="contact" class="container mt-5">
+    <h2 class="text-center mb-4">Kontakt</h2>
+    <p class="text-center mb-4">Máte-li jakékoli dotazy nebo potřebujete pomoc, neváhejte nás kontaktovat.</p>
+    <div class="text-center">
+        <a th:href="@{/contact}" class="btn btn-primary btn-lg">
+            Kontaktujte nás
+            <img th:src="@{/images/email.png}" alt="email" class="ms-2" style="width: 20px; vertical-align: middle;">
+        </a>
+    </div>
+</section>
+
+<!-- Patička -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+
+<!-- Skripty pro Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

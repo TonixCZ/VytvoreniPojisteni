@@ -1,0 +1,72 @@
+/* Základní styl pro formulář */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl pro jednotlivé formové skupiny */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Styl pro label */
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Styl pro vstupní pole (input, textarea) */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #00796b;
+    box-shadow: 0 0 5px rgba(0, 121, 107, 0.5);
+}
+
+/* Styl pro chybové hlášky */
+.text-danger {
+    color: red;
+    font-size: 14px;
+}
+
+/* Styl pro tlačítka (obě tlačítka budou stejně široká a vysoká) */
+.clanky-tlacitko {
+    display: inline-block;
+    background-color: #00796b;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Stejná šířka pro obě tlačítka */
+    box-sizing: border-box; /* Zajišťuje, že padding neovlivní šířku */
+}
+
+/* Efekt při hoveru */
+.clanky-tlacitko:hover {
+    background-color: #004d40;
+}
+
+/* Pokud chcete tlačítko "Zpět na seznam" mít odsazené od vrchu */
+.clanky-tlacitko + .clanky-tlacitko {
+    margin-top: 20px;
+}

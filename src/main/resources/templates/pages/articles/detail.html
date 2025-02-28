@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article>
+    <header>
+        <h1>Detail recenze</h1>
+    </header>
+
+    <div id="centrovac">
+        <section>
+            <div class="container">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <strong>Titulek:</strong>
+                    </div>
+                    <div class="card-body">
+                        <p th:text="${article.title}"></p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <strong>Popis:</strong>
+                    </div>
+                    <div class="card-body">
+                        <p th:text="${article.description}"></p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <strong>Obsah:</strong>
+                    </div>
+                    <div class="card-body">
+                        <p th:utext="${article.content}"></p>
+                    </div>
+                </div>
+
+                <a class="btn btn-secondary" th:href="@{/articles}">Zpět na seznam</a>
+            </div>
+        </section>
+    </div>
+</article>
+
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+
+</body>
+</html>

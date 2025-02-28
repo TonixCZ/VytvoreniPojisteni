@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tonix Care - Pojišťovna</title>
+
+    <!-- Zahrnutí Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Favicon (ikona) -->
+    <link rel="icon" href="/path/to/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="bg-light">
+
+<!-- Hlavička (fragments/layout.html :: header) -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<!-- Sekce Kontaktní formulář -->
+<section id="contact" class="container mt-5">
+    <h2 class="text-center mb-4">Kontaktujte nás</h2>
+    <p class="text-center mb-5">Pokud máte nějaké dotazy nebo potřebujete pomoc, vyplňte prosím formulář níže a my se vám co nejdříve ozveme:</p>
+
+    <!-- Formulář pro kontakt -->
+    <form th:action="@{/submit-form}" method="post" class="contact-form bg-white p-4 rounded shadow-sm">
+
+        <!-- Vaše jméno -->
+        <div class="mb-3">
+            <label for="name" class="form-label">Vaše jméno</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Vaše jméno" required="required"/>
+        </div>
+
+        <!-- Váš email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Váš email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Váš email" required="required"/>
+        </div>
+
+        <!-- Předmět -->
+        <div class="mb-3">
+            <label for="subject" class="form-label">Předmět</label>
+            <input type="text" id="subject" name="subject" class="form-control" placeholder="Předmět" required="required"/>
+        </div>
+
+        <!-- Vaše zpráva -->
+        <div class="mb-3">
+            <label for="message" class="form-label">Vaše zpráva</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Napište nám..." required="required"></textarea>
+        </div>
+
+        <!-- Tlačítko pro odeslání -->
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary w-100">Odeslat</button>
+        </div>
+    </form>
+</section>
+
+<!-- Patička (fragments/layout.html :: footer) -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+
+<!-- Skripty pro Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

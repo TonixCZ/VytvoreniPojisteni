@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+
+<!-- Header z Thymeleaf -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<!-- Flash zprávy -->
+<div class="container mt-3">
+    <div th:if="${error}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+</div>
+
+<!-- Formulář pro registraci -->
+<div class="container d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="card p-4 shadow-sm" style="width: 350px;">
+        <h2 class="text-center mb-4">Registrace</h2>
+        <form th:action="@{/account/register}" th:object="${userDTO}" method="post">
+            <!-- Jméno -->
+            <div class="mb-3">
+                <label for="firstName" class="form-label">Jméno</label>
+                <input id="firstName" name="firstName" th:field="*{firstName}" class="form-control" required>
+                <small class="text-danger" th:errors="*{firstName}"></small> <!-- Chyby pro jméno -->
+            </div>
+            <!-- Příjmení -->
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Příjmení</label>
+                <input id="lastName" name="lastName" th:field="*{lastName}" class="form-control" required>
+                <small class="text-danger" th:errors="*{lastName}"></small> <!-- Chyby pro příjmení -->
+            </div>
+            <!-- Telefonní číslo -->
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Telefonní číslo</label>
+                <input id="phoneNumber" name="phoneNumber" th:field="*{phoneNumber}" class="form-control">
+                <small class="text-danger" th:errors="*{phoneNumber}"></small> <!-- Chyby pro telefonní číslo -->
+            </div>
+            <!-- Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Uživatelský email</label>
+                <input id="email" name="email" th:field="*{email}" class="form-control" required>
+                <small class="text-danger" th:errors="*{email}"></small> <!-- Chyby pro email -->
+            </div>
+            <!-- Heslo -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Heslo</label>
+                <input id="password" name="password" type="password" th:field="*{password}" class="form-control" required>
+                <small class="text-danger" th:errors="*{password}"></small> <!-- Chyby pro heslo -->
+            </div>
+            <!-- Potvrzení hesla -->
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Heslo pro zopakování</label>
+                <input id="confirm-password" name="confirmPassword" type="password" th:field="*{confirmPassword}" class="form-control" required>
+                <small class="text-danger" th:errors="*{confirmPassword}"></small> <!-- Chyby pro potvrzení hesla -->
+            </div>
+            <button type="submit" class="btn btn-success w-100">Registrovat</button>
+        </form>
+        <div class="text-center mt-3">
+            <a th:href="@{/account/login}" class="text-decoration-none">Přihlásit se</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer z Thymeleaf -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

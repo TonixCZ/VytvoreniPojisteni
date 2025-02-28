@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{fragments/layout.html :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<article class="user-edit container mt-5">
+    <header>
+        <h1 class="text-center mb-4">Úprava uživatele</h1>
+    </header>
+
+    <!-- Formulář pro úpravu údajů uživatele -->
+    <form th:action="@{/account/edit/{userId}(userId=${user.userId})}" method="post" th:object="${user}">
+        <input type="hidden" th:field="*{userId}" />
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Jméno:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" class="form-control" required />
+            <div class="text-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Příjmení:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" class="form-control" required />
+            <div class="text-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Telefon:</label>
+            <input type="text" id="phoneNumber" th:field="*{phoneNumber}" class="form-control" pattern="[0-9]{9}" required />
+            <div class="text-danger" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" required />
+            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Nové heslo:</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Potvrdit heslo:</label>
+            <input type="password" id="confirmPassword" th:field="*{confirmPassword}" class="form-control" />
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">Uložit změny</button>
+            <a th:href="@{/account/user-list}" class="btn btn-secondary ms-3">Zpět na seznam uživatelů</a>
+        </div>
+    </form>
+
+    <!-- Footer -->
+    <footer th:replace="~{fragments/layout.html :: footer}"></footer>
+</article>
+
+
+</body>
+
+</html>

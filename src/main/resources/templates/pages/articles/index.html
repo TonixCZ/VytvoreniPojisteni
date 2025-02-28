@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="cs" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tonix Care - Pojišťovna</title>
+
+    <!-- Zahrnutí fragmentu pro <head> -->
+    <th:block th:replace="~{fragments/layout.html :: head}"></th:block>
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+
+<!-- Zahrnutí fragmentu pro <header> -->
+<header th:replace="~{fragments/layout.html :: header}"></header>
+
+<!-- Flash zprávy pro úspěch a chyby -->
+<div class="py-2 flash-message message-success" th:text="${success}" th:if="${success}"></div>
+<div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
+
+<article class="container mt-5">
+    <header class="mb-4">
+        <h1>Seznam Recenzí</h1>
+    </header>
+
+    <section>
+
+        <!-- Tlačítko pro vytvoření nového článku (viditelné pouze pro přihlášené uživatele) -->
+        <p sec:authorize="isAuthenticated()">
+            <a class="btn btn-primary" th:href="@{/articles/create}">Vytvořit novou</a>
+        </p>
+
+        <!-- Seznam recenzí -->
+        <ul class="list-group">
+            <li th:each="article : ${articles}" class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <h5><a th:href="@{'/articles/' + ${article.articleId}}" th:text="${article.title}"></a></h5>
+                    <p th:text="${article.description}"></p>
+                </div>
+
+                <!-- Odkazy pro editaci a odstranění článků pro admina -->
+                <p sec:authorize="hasRole('ADMIN')" class="mb-0">
+                    <a th:href="@{'/articles/edit/' + ${article.articleId}}" class="btn btn-sm btn-warning">Editovat</a>
+                    <a th:href="@{'/articles/delete/' + ${article.articleId}}"
+                       class="btn btn-sm btn-danger"
+                       onclick="return confirm('Opravdu chcete smazat tento článek?')">Odstranit</a>
+                </p>
+            </li>
+        </ul>
+
+        <!-- Tlačítko pro návrat na domovskou stránku -->
+        <a class="btn btn-secondary mt-4" th:href="@{/}">Zpět na domovskou stránku</a>
+
+    </section>
+</article>
+
+<!-- Footer z Thymeleaf -->
+<footer th:replace="~{fragments/layout.html :: footer}"></footer>
+
+<!-- Script pro Bootstrap (pokud je potřeba) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+#clanky {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item h2 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.list-group-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+.list-group-item a {
+    text-decoration: none;
+    color: #00796b;
+    margin-right: 10px;
+}
+
+.list-group-item a:hover {
+    color: #004d40;
+}
+/* Obecný styl pro flash zprávy */
+.flash-message {
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    max-width: 600px; /* Maximální šířka */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Styl pro úspěšné zprávy */
+.flash-message-success {
+    background-color: #4CAF50; /* Zelená */
+    color: white;
+    border: 1px solid #388E3C;
+}
+
+/* Styl pro chybové zprávy */
+.flash-message-error {
+    background-color: #f44336; /* Červená */
+    color: white;
+    border: 1px solid #d32f2f;
+}
+
