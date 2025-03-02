@@ -40,10 +40,12 @@
             <input class="form-control" type="email" th:field="*{email}" id="email" required/>
         </div>
 
-        <!-- Telefon pojištěnce -->
+        <!-- Telefon pojištěnce (validace pro 9 číslic) -->
         <div class="mb-3">
             <label for="phoneNumber" class="form-label">Telefon:</label>
-            <input class="form-control" type="text" th:field="*{phoneNumber}" id="phoneNumber" required/>
+            <input class="form-control" type="text" th:field="*{phoneNumber}" id="phoneNumber" required
+                   pattern="^\d{9}$" title="Telefonní číslo musí mít přesně 9 číslic" />
+            <small id="phoneHelp" class="form-text text-muted">Telefonní číslo musí obsahovat přesně 9 číslic.</small>
         </div>
 
         <!-- Tlačítko pro odeslání -->

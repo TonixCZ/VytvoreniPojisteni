@@ -33,8 +33,10 @@
 
         <div class="mb-3">
             <label for="phoneNumber" class="form-label">Telefon</label>
-            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" required>
-            <div class="invalid-feedback">Vyplňte telefonní číslo.</div>
+            <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}"
+                   pattern="\d{9}" minlength="9" maxlength="9" required>
+            <div class="invalid-feedback">Telefonní číslo musí obsahovat přesně 9 číslic.</div>
+            <small class="text-muted">Například: 123456789</small>
         </div>
 
         <button type="submit" class="btn btn-primary">Uložit</button>
@@ -49,6 +51,7 @@
     (function () {
         'use strict';
         var forms = document.querySelectorAll('.needs-validation');
+
         Array.prototype.slice.call(forms).forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
@@ -58,6 +61,16 @@
                 form.classList.add('was-validated');
             }, false);
         });
+
+        // Další validace pro telefonní číslo
+        var phoneInput = document.getElementById("phoneNumber");
+        phoneInput.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, ''); // Odstraní nečíselné znaky
+            if (this.value.length > 9) {
+                this.value = this.value.slice(0, 9); // Ořízne na 9 znaků
+            }
+        });
+
     })();
 </script>
 </body>
