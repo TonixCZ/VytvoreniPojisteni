@@ -120,6 +120,7 @@
                     <mainClass>tonixcare.Application</mainClass> <!-- Určuje hlavní třídu aplikace -->
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
