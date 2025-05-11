@@ -32,11 +32,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- MariaDB JDBC driver pro připojení k databázi -->
+        <!-- MySQL JDBC driver pro připojení k databázi -->
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>3.1.2</version> <!-- Správná verze MariaDB JDBC Driveru -->
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
         <!-- Základní testovací závislosti pro Spring Boot -->
@@ -51,39 +51,18 @@
             <artifactId>mapstruct</artifactId>
             <version>1.5.3.Final</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.31</version>
-        </dependency>
-
-
+        <!-- Thymeleaf Spring Security integration -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
             <version>3.1.1.RELEASE</version>
         </dependency>
-
+        <!-- Spring Security Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
             <version>3.0.2</version>
         </dependency>
-
-        <!-- Spring Security Crypto pro BCryptPasswordEncoder -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
-            <version>5.4.5</version> <!-- Verze závislosti, pokud používáš jinou verzi Spring Boot, uprav ji podle potřeby -->
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <version>8.0.33</version>
-        </dependency>
-
         <!-- Spring Boot Validation Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,7 +73,7 @@
 
     <build>
         <plugins>
-            <!-- Kompilace s podporou MapStruct (už máš) -->
+            <!-- Kompilace s podporou MapStruct -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -112,7 +91,7 @@
                 </configuration>
             </plugin>
 
-            <!-- TOTO přidej -->
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -120,7 +99,6 @@
                     <mainClass>tonixcare.Application</mainClass> <!-- Určuje hlavní třídu aplikace -->
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 </project>
